@@ -2,8 +2,16 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
+use App\Category;
+use App\Slide;
+use App\Typenews;
+use App\News;
+use App\Comment;
+use App\User;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,8 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        schema::defaultStringLength(191);
+        $category = Category::all();
+        $slide = Slide::all();
+        view()->share('category', $category);
+        view()->share('slide', $slide);
+
     }
 
     /**
