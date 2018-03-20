@@ -14,14 +14,12 @@ class Comment extends Model
     protected $table = "Comment";
     
     // tao lien ket giua cac model
-    public function news()
-    {
+    public function news(){
     	//comment thuoc tin tuc nao do
     	return $this->belongsTo('App\News', 'id_news', 'id');
     }
 
-    public function user()
-    {
+    public function user(){
     	//1 comment do 1 user
     	return $this->belongsTo('App\User', 'id_user', 'id');
     }

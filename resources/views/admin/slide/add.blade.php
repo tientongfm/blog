@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Hình ảnh</label>
-                                    <input type="file" name="image" class="form-control" />
+                                    <input type="file" name="image" class="form-control">
                                 </div>
                                 <button type="submit" class="btn btn-default">Thêm</button>
                                 <button type="reset" class="btn btn-default">Reset</button>

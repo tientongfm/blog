@@ -79,23 +79,23 @@
                     <div class="form-group">
                         <label>Hình ảnh</label>
                         <p>
-                        <img src="upload/news/{{$news->image}}">
+                        <img style="width: 300px;"src="upload/tintuc/{{$news->image}}">
                         </p>
                         <input type="file" name="image" id="image">
                     </div>
                     <div class="form-group">
                         <label>Nổi bật</label>
                         <label class="radio-inline">
-                            <input name="Highlights" value="0" 
-                            @if($news->Highlights == 0)
+                            <input name="hotnews" value="0" 
+                            @if($news->hotnews == 0)
                                 {{"checked"}}
                             @endif
 
                             type="radio">Không
-                            </label>
+                        </label>
                         <label class="radio-inline">
-                            <input name="Highlights" value="1" 
-                            @if($news->Highlights == 0)
+                            <input name="hotnews" value="1" 
+                            @if($news->hotnews == 1)
                                 {{"checked"}}
                             @endif
 

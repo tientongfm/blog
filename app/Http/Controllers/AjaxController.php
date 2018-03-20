@@ -13,15 +13,10 @@ use App\News;
 class AjaxController extends Controller
 {
     //
-    public function getTypenews($id_category)
-    {
+    public function getTypenews($id_category){
     	$typenews = Typenews::where('id_category', $id_category)->get();
-    	foreach( $typenews as $type)
-    	{
-    		
-            echo "<option value='".$type->id."'>".$type->name."</option>";
-            
-    		
+    	foreach( $typenews as $type){    		
+            echo "<option value='".$type->id."'>".$type->name."</option>";                		
     	}
 
     }

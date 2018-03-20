@@ -25,8 +25,9 @@
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Tên không dấu</th>
-                                <th>Delete</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
@@ -35,8 +36,8 @@
                                 <td>{{$cate->id}}</td>
                                 <td>{{$cate->name}}</td>
                                 <td>{{$cate->name_without_accent}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/category/delete/{{$cate->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/category/edit/{{$cate->id}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/category/delete/{{$cate->id}}" onclick='return show_confirm()'> Delete</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -47,5 +48,19 @@
             <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
+@endsection
+
+@section('script')
+<script>
+    function show_confirm(){
+        if(confirm("Bạn có muốn xóa danh mục này?")){
+           return true;
+        }
+        else {
+           return false;
+      }
+    }    
+</script>
+
 @endsection
 

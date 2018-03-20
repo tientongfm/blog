@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Category;
 
 Route::get('/', function () {
     return view('welcome');
@@ -90,16 +89,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
 		Route::post('add', 'SlideController@postAdd');
 
 		Route::get('edit', 'SlideController@getEdit');
-		Route::post('add', 'SlideController@postAdd');
+		Route::post('edit', 'SlideController@postAdd');
+
+		Route::get('delete/{id}','SlideController@getDelete');
 
 	});
 
 	Route::group(['prefix'=>'ajax'], function(){
-		Route::get('typenews/{id_category}','AjaxController@getTypenews');
-		
+		Route::get('typenews/{id_category}','AjaxController@getTypenews');		
 	});
-
-
 });
 
 Route::get('index', 'PagesController@index');
@@ -110,9 +108,18 @@ Route::get('news/{id}/{name_without_accent}.html', 'PagesController@news');
 Route::get('user_login', 'PagesController@getLogin');
 Route::post('user_login', 'PagesController@postLogin');
 Route::get('user_logout', 'PagesController@getLogout');
+Route::get('user', 'PagesController@getUser');
+Route::post('user', 'PagesController@postUser');
+Route::get('register', 'PagesController@getRegister');
+Route::post('register', 'PagesController@postRegister');
 
 Route::post('comment/{id}', 'CommentController@postComment');
+Route::get('search', 'PagesController@search');
 
+
+
+Route::resource('upload_file', 'UploadController');
+Route::post('upload_file', 'UploadController@Upload_file');
 
 
 

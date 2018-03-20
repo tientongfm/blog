@@ -8,9 +8,9 @@ class Slide extends Model{
 
 	protected $fillable = [
 		'name', 
-		'image',
 		'content',
 		'link',
+		'image',
 	];
 
     protected $table = "Slide";

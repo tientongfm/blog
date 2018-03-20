@@ -22,12 +22,10 @@ class CommentController extends Controller
     	$comment->id_news = $id;
         $comment->id_user = Auth::user()->id;
         $comment->content = Input::get('content');
-       
-    	
+
     	$comment->save();
 
     	return redirect('news/'.$news->id .'/' .$news->name_without_accent.'.html')->with('thongbao', 'Viết bình luận thành công');
-
-
     }
+
 }

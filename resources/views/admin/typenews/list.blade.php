@@ -26,8 +26,8 @@
                                 <th>Tên loại tin</th>
                                 <th>Tên không dấu</th>
                                 <th>Thể loại</th>
-                                <th>Delete</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,8 +37,8 @@
                                 <td>{{$type->name}}</td>
                                 <td>{{$type->name_without_accent}}</td>
                                 <td>{{$type->category->name}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/typenews/delete/{{$type->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/typenews/edit/{{$type->id}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/typenews/delete/{{$type->id}}" onclick='return show_confirm()'> Delete</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -49,5 +49,19 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+@endsection
+
+@section('script')
+<script>
+    function show_confirm(){
+        if(confirm("Bạn có muốn xóa danh mục này?")){
+           return true;
+        }
+        else {
+           return false;
+      }
+    }    
+</script>
+
 @endsection
 

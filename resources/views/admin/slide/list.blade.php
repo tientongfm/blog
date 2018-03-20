@@ -27,8 +27,8 @@
                                 <th>Nội dung</th>
                                 <th>Hình</th>
                                 <th>Link</th>
-                                <th>Delete</th>
                                 <th>Edit</th>
+                                <th>Delete</th> 
                             </tr>
                         </thead>
                         <tbody>
@@ -41,8 +41,8 @@
                                     <img width="400px" src="upload/slide/{{ $sd->image }}">
                                 </td>
                                 <td>{{ $sd->link}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/slide/delete/{{$sd->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/slide/edit/{{$sd->id}}"> Edit</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/slide/delete/{{$sd->id}}" onclick='return show_confirm()'> Delete</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -54,4 +54,18 @@
         </div>
         <!-- /#page-wrapper -->
 @endsection
+
+@section('script')
+<script>
+    function show_confirm(){
+        if(confirm("Bạn có muốn xóa danh mục này?")){
+           return true;
+        }
+        else {
+           return false;
+      }
+    }    
+</script>
+@endsection
+
 

@@ -22,11 +22,12 @@
                     </li>
                 </ul>
 
-                <form class="navbar-form navbar-left" role="search">
+                <form action="{{ url('search') }}" class="navbar-form navbar-left" role="search" >
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 			        <div class="form-group">
-			          <input type="text" class="form-control" placeholder="Search">
+			          <input type="text" name="key" class="form-control" placeholder="Search">
 			        </div>
-			        <button type="submit" class="btn btn-default">Submit</button>
+			        <button type="submit" class="btn btn-default">Search</button>
 			    </form>
 
 			    <ul class="nav navbar-nav pull-right">
@@ -52,7 +53,7 @@
 
                     @if(Auth::check())
                         <li>
-                            <a>
+                            <a href="{{ url('user')}}">
                                 <span class ="glyphicon glyphicon-user"></span>
                                  {{ Auth::user()->name }}
                             </a>
@@ -63,7 +64,7 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ url('user_register')}}">Đăng ký</a>
+                            <a href="{{ url('register')}}">Đăng ký</a>
                         </li>
                         <li>
                             <a href="{{ url('user_login')}}">Đăng nhập</a>

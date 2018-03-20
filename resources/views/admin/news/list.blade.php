@@ -29,8 +29,8 @@
                             <th>Loại tin</th>
                             <th>Xem</th>
                             <th>Nổi bật</th>
-                            <th>Delete</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,8 +51,8 @@
                                     {{'Có'}}
                                 @endif
                             </td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/news/delete/{{$tt->id}}"> Delete</a></td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/news/edit/{{$tt->id}}">Edit</a></td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/news/delete/{{$tt->id}}" onclick='return show_confirm()'> Delete</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -65,3 +65,16 @@
     <!-- /#page-wrapper -->
 @endsection
 
+@section('script')
+<script>
+    function show_confirm(){
+        if(confirm("Bạn có muốn xóa danh mục này?")){
+           return true;
+        }
+        else {
+           return false;
+      }
+    }    
+</script>
+
+@endsection

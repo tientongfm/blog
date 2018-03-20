@@ -35,36 +35,22 @@ class SlideController extends Controller
 
     		]);
 
-    	$slide = new Slide;
+
+        $slide= new Slide($request->input()) ;
+        /*$slide = new Slide;*/
     	$slide->name = $request->name;
     	$slide->content = $request->content;
         $slide->link = $request->link;
 
-    	/*if($request->has('link'))
-    		$slide->link = $request->link;*/
 
-    	if($request->hasFile('image'))
-    	{
-    		$file = $request->file('image');
-    		$below = $file->getClientOriginalExtension();
-    		if($below != 'jpg' && $below != 'png' &&$bellow != 'jpeg')
-    		{
-    			return redirect('admin/slide/add')->with('loi', 'Bạn chỉ được chọn các file có đuôi jpg, png, jpeg');
-    		}
-    		$name = $file->getClientOriginalName();
-    		$image = str_random(4)."_".$name;
-    		while(file_exists("upload/slide/".$image))
-    		{
-    			$image = str_random(4)."_".$name;
-    		}
-    		$file->move("upload/slide", $image);
-    		$slide->image = $image;
-    	}
-    	
-    	else
-    	{
-    		$slide->image = "";
-    	}
+    	if($file = $request->hasFile('image')) {
+            
+            $file = $request->file('image') ;           
+            $fileName = $file->getClientOriginalName() ;
+            $destinationPath = public_path().'/upload/slide/' ;
+            $file->move($destinationPath,$fileName);
+            $slide->image = $fileName ;
+        }
 
       /*  $slide= new Slide($request->input()) ;
      
@@ -79,8 +65,16 @@ class SlideController extends Controller
         }
 */
     	$slide->save();
-    	return redirect('admin/slide/add')->with('thongbao', 'Thêm thành công');
+    	return redirect('admin/slide/list')->with('thongbao', 'Thêm thành công');
 
+    }
+
+    public function getDelete($id)
+    {
+        $slide = Slide::find($id);
+        $slide->delete();
+
+        return redirect('admin/slide/list')->with('thongbao', 'Bạn đã xóa thành công');
     }
 
 }

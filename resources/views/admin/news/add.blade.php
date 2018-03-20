@@ -34,14 +34,14 @@
                     <div class="form-group">
                         <label>Thể loại</label>
                         <select class="form-control" name="Category" id="Category">
-                                @foreach($category as $cate)
-                                    <option value="{{$cate->id}}">{{$cate->name}}</option>
-                                @endforeach
+                            @foreach($category as $cate)
+                                <option value="{{$cate->id}}">{{$cate->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Loại tin</label>
-                        <select class="form-control" name="Typenews" id="Typenews">
+                        <select class="form-control" name="typenews" id="Typenews">
                             @foreach($typenews as $type)
                                 <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
@@ -69,10 +69,10 @@
                     <div class="form-group">
                         <label>Nổi bật</label>
                         <label class="radio-inline">
-                            <input name="Highlights" value="1" checked="" type="radio">Không
+                            <input name="hotnews" value="0" checked="" type="radio">Không
                             </label>
                         <label class="radio-inline">
-                            <input name="Highlights" value="0" type="radio">Có
+                            <input name="hotnews" value="1" type="radio">Có
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Thêm</button>
