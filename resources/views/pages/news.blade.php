@@ -34,7 +34,7 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
-                {{-- @if(Auth::check())
+                @if(Auth::check())
                 <div class="well">
                     @if(session('thongbao'))
                         <div class = "alert alert-success">
@@ -49,7 +49,7 @@
                         </div>
                         <button type="submit" name="submit-com" class="btn btn-primary">Gửi</button>
                     </form>
-                </div> --}}
+                </div>
 
                 <div class="well">
                     <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
@@ -63,7 +63,7 @@
                 <hr>
 
                 <!-- Posted Comments -->
-               {{--  @endif --}}
+                @endif
 
                 <!-- Comment -->
                 @foreach( $news->comment as $val)
