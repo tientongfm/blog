@@ -54,7 +54,7 @@
 @section('script')
 <script>
     function show_confirm(){
-        if(confirm("Bạn có muốn xóa danh mục này?")){
+        if(confirm("Bạn có muốn xóa loại tin này?")){
            return true;
         }
         else {

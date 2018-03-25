@@ -24,11 +24,12 @@
                         <tr align="center">
                             <th>ID</th>
                             <th>Tiêu đề</th>
+                            <th>Nổi bật</th>
                             <th>Tóm tắt</th>
                             <th>Thể loại</th>
                             <th>Loại tin</th>
                             <th>Xem</th>
-                            <th>Nổi bật</th>
+                            
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -40,10 +41,6 @@
                             <td><p>{{$tt->title}}</p>
                                 <img width="100px" src="upload/tintuc/{{$tt->image}}">   
                             </td>
-                            <td>{{$tt->summary}}</td>
-                            <td>{{$tt->typenews->category->name}}</td>
-                            <td>{{$tt->typenews->name}}</td>
-                            <td>{{$tt->view_counts}}</td>
                             <td>
                                 @if($tt->hotnews == 0)
                                     {{'Không'}}
@@ -51,6 +48,11 @@
                                     {{'Có'}}
                                 @endif
                             </td>
+                            <td>{{$tt->summary}}</td>
+                            <td>{{$tt->typenews->category->name}}</td>
+                            <td>{{$tt->typenews->name}}</td>
+                            <td>{{$tt->view_counts}}</td>
+                            
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/news/edit/{{$tt->id}}">Edit</a></td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/news/delete/{{$tt->id}}" onclick='return show_confirm()'> Delete</a></td>
                         </tr>
@@ -68,7 +70,7 @@
 @section('script')
 <script>
     function show_confirm(){
-        if(confirm("Bạn có muốn xóa danh mục này?")){
+        if(confirm("Bạn có muốn xóa tin tức này?")){
            return true;
         }
         else {

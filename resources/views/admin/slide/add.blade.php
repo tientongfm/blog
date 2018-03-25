@@ -28,7 +28,7 @@
                         @endif
 
 
-                        <form method="POST" action="{{url('admin/slide/add')}}">
+                        <form method="POST" action="{{url('admin/slide/add')}}"  enctype="multipart/form-data">
                              {{csrf_field()}}
                         {{-- <form action="admin/slide/add" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}

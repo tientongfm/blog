@@ -81,6 +81,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
 		Route::get('delete/{id}','UserController@getDelete');
 	});
 
+	/*Route::resource('slide', 'SlideController');*/
+
 	Route::group(['prefix'=>'slide'], function(){
 		//admin/slide/add
 		Route::get('list', 'SlideController@getList');
@@ -88,8 +90,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
 		Route::get('add', 'SlideController@getAdd');
 		Route::post('add', 'SlideController@postAdd');
 
-		Route::get('edit', 'SlideController@getEdit');
-		Route::post('edit', 'SlideController@postAdd');
+		Route::get('edit/{id}', 'SlideController@getEdit');
+		Route::post('edit/{id}', 'SlideController@postEdit');
 
 		Route::get('delete/{id}','SlideController@getDelete');
 
@@ -117,9 +119,6 @@ Route::post('comment/{id}', 'CommentController@postComment');
 Route::get('search', 'PagesController@search');
 
 
-
 Route::resource('upload_file', 'UploadController');
 Route::post('upload_file', 'UploadController@Upload_file');
-
-
 

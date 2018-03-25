@@ -27,25 +27,28 @@
                             </div>
                         @endif
 
-                        <form action="admin/slide/edit" method="POST">
+                        <form action="admin/slide/edit/{{$slide->id}}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label>Tên</label>
-                                <input class="form-control" name="name" placeholder=" Nhập tên slide" />
+                                <input class="form-control" name="name" value="{{$slide->name}}" />
                             </div>
                              <div class="form-group">
                                 <label>Nội dung</label>
-                                <input class="form-control" name="content" placeholder=" Nhập nội dung slide" />
+                                <input class="form-control" name="content" value="{{$slide->content}}" />
                             </div>
                             <div class="form-group">
                                 <label>Link</label>
-                                <input class="form-control" name="link" placeholder=" Nhập link slide" />
+                                <input class="form-control" name="link" value="{{$slide->link}}" />
                             </div>
                             <div class="form-group">
                                 <label>Hình ảnh</label>
-                                <input type="file" class="form-control" name="image" />
+                                <p>
+                                <img style="width: 300px;"src="upload/slide/{{$slide->image}}">
+                                </p>
+                                <input type="file" name="image" id="image">
                             </div>
-                            <button type="submit" class="btn btn-default">Thêm</button>
+                            <button type="submit" class="btn btn-default">Sửa</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

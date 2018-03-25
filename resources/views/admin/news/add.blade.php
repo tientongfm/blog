@@ -52,6 +52,15 @@
                         <input class="form-control" name="title" placeholder=" Nhập tiêu đề">
                     </div>
                     <div class="form-group">
+                        <label>Nổi bật</label>
+                        <label class="radio-inline">
+                            <input name="hotnews" value="0" checked="" type="radio">Không
+                            </label>
+                        <label class="radio-inline">
+                            <input name="hotnews" value="1" type="radio">Có
+                        </label>
+                    </div>
+                    <div class="form-group">
                         <label>Tóm tắt</label>
                         <textarea id="demo" class="form-control ckeditor" name="summary"
                             placeholder="Nhập tóm tắt" row="3";>
@@ -66,15 +75,7 @@
                         <label>Hình ảnh</label>
                         <input type="file" name="image" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label>Nổi bật</label>
-                        <label class="radio-inline">
-                            <input name="hotnews" value="0" checked="" type="radio">Không
-                            </label>
-                        <label class="radio-inline">
-                            <input name="hotnews" value="1" type="radio">Có
-                        </label>
-                    </div>
+                    
                     <button type="submit" class="btn btn-default">Thêm</button>
                     <button type="reset" class="btn btn-default">Làm mới</button>
                 </form>

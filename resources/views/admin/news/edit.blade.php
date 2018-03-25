@@ -28,7 +28,7 @@
                         </div>
                     @endif
 
-                <form action="admin/news/edit/{{$news->id}}" method="POST" enctype="multipart/form- data" >
+                <form action="admin/news/edit/{{$news->id}}" method="POST" enctype="multipart/form-data" >
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
@@ -64,26 +64,6 @@
                         <input class="form-control" name="title" placeholder=" Nhập tiêu đề" value ="{{$news->title}}">
                     </div>
                     <div class="form-group">
-                        <label>Tóm tắt</label>
-                        <textarea id="demo" class="form-control ckeditor" name="summary"
-                            placeholder="Nhập tóm tắt" row="3";>
-                            {{$news->summary}}
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Nội dung</label>
-                        <textarea id="demo" class="form-control ckeditor" name="content" placeholder="Please Enter Category Order" row="3";>
-                            {{$news->content}}
-                        </textarea>
-                    </div>    
-                    <div class="form-group">
-                        <label>Hình ảnh</label>
-                        <p>
-                        <img style="width: 300px;"src="upload/tintuc/{{$news->image}}">
-                        </p>
-                        <input type="file" name="image" id="image">
-                    </div>
-                    <div class="form-group">
                         <label>Nổi bật</label>
                         <label class="radio-inline">
                             <input name="hotnews" value="0" 
@@ -102,6 +82,36 @@
                             type="radio">Có
                         </label>
                     </div>
+                    <div class="form-group">
+                        <label>Tóm tắt</label>
+                        <textarea id="demo" class="form-control ckeditor" name="summary"
+                            placeholder="Nhập tóm tắt" row="3";>
+                            {{$news->summary}}
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung</label>
+                        <textarea id="demo" class="form-control ckeditor" name="content" placeholder="Please Enter Category Order" row="3";>
+                            {{$news->content}}
+                        </textarea>
+                    </div>    
+                    <div class="form-group">
+                        <label>Hình ảnh</label>
+                        <p>
+                        <img style="width: 300px;"src="upload/tintuc/{{$news->image}}">
+                        </p>
+                        <input type="file" name="image1" id="image">
+                    </div>
+
+                    {{-- <div class="form-group">
+                        <label for="image">Image File</label>
+                        <p>
+                        <img style="width: 300px;"src="upload/tintuc/{{$news->image}}">
+                        </p>
+                        {!! Form::file('image',null,['class'=>'form-control']) !!}
+                    </div> --}}
+
+
                     <button type="submit" class="btn btn-default">Sửa</button>
                     <button type="reset" class="btn btn-default">Làm mới</button>
                 </form>

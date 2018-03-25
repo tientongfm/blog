@@ -58,7 +58,7 @@
 @section('script')
 <script>
     function show_confirm(){
-        if(confirm("Bạn có muốn xóa danh mục này?")){
+        if(confirm("Bạn có muốn xóa slide này?")){
            return true;
         }
         else {

@@ -7,7 +7,7 @@ use App\Slide;
 
 class SlideController extends Controller
 {
-    //
+
     public function getList()
     {
     	$slide = Slide::all();
@@ -21,10 +21,7 @@ class SlideController extends Controller
 
     public function postAdd(Request $request){
 
-       /* return json_encode($request);
-        die();
-*/
-    	$this->validate($request,
+ 	    $this->validate($request,
     		[
     			'name'=>'required',
     			'content'=>'required'
@@ -35,37 +32,65 @@ class SlideController extends Controller
 
     		]);
 
-
-        $slide= new Slide($request->input()) ;
-        /*$slide = new Slide;*/
+        $slide = new Slide;
     	$slide->name = $request->name;
     	$slide->content = $request->content;
         $slide->link = $request->link;
 
 
-    	if($file = $request->hasFile('image')) {
+    	/*if($file = $request->hasFile('image')) {
             
             $file = $request->file('image') ;           
             $fileName = $file->getClientOriginalName() ;
             $destinationPath = public_path().'/upload/slide/' ;
             $file->move($destinationPath,$fileName);
             $slide->image = $fileName ;
-        }
+        }*/
+        $file = $request->file('image');
+        $destination_path = public_path().'/upload/slide/' ;
+        $filename = str_random(6).'_'.$file->getClientOriginalName();
+        $file->move($destination_path, $filename);
+        $slide->image = $filename;
 
-      /*  $slide= new Slide($request->input()) ;
-     
-         if($file = $request->hasFile('image')) {
-            
-            $file = $request->file('image') ;
-            
-            $fileName = $file->getClientOriginalName() ;
-            $destinationPath = public_path().'/image/slide/' ;
-            $file->move($destinationPath,$fileName);
-            $slide->image = $fileName ;
-        }
-*/
     	$slide->save();
     	return redirect('admin/slide/list')->with('thongbao', 'Thêm thành công');
+
+    }
+
+    public function getEdit($id){
+        $slide = Slide::find($id);
+        return view('admin.slide.edit', compact('slide'));
+    }
+
+    public function postEdit(Request $request,$id){
+        $this->validate($request,
+            [
+                'name'=>'required',
+                'content'=>'required'
+            ],
+            [
+                'name.required'=>'Bạn chưa nhập tên Slide',
+                'name.required'=>'Bạn chưa nhập nội dung Slide'
+
+            ]);
+        $slide = Slide::find($id);
+        $slide->name = $request->input('name');
+        $slide->content = $request->input('content');
+        $slide->link = $request->input('link');
+
+          // if user choose a file, replace the old one //
+        if( $request->hasFile('image') ){
+            $file = $request->file('image');
+            $destination_path = public_path().'/upload/slide/' ;
+            $filename = str_random(6).'_'.$file->getClientOriginalName();
+            $file->move($destination_path, $filename);
+            $slide->image = $filename;
+        }
+
+        dd($slide);
+
+        $slide->save();
+        return redirect('admin/slide/list')->with('thongbao', 'Sửa thành công');
 
     }
 
@@ -78,3 +103,4 @@ class SlideController extends Controller
     }
 
 }
+

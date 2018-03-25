@@ -29,7 +29,7 @@ class TypenewsController extends Controller
     {
     	$this->validate($request, 
     		[
-    			'name' => 'required|unique:category,name|min:3|max:100',
+    			'name' => 'required|unique:typenews,name|min:3|max:100',
     			'Category' => 'required'
 
     		],
@@ -51,8 +51,8 @@ class TypenewsController extends Controller
         $typenews->id_category = $request->Category;
         $typenews->save();
 
-        return $typenews;
-        die();
+        /*return $typenews;
+        die();*/
         return redirect('admin/typenews/list')->with('thongbao',' Bạn đã thêm loại tin thành công');
     }
 
